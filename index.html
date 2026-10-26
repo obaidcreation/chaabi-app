@@ -1564,7 +1564,8 @@ const MAPS={};
 const dropMap=k=>{const m=MAPS[k];delete MAPS[k];if(!m)return;try{m.stop()}catch(e){}setTimeout(()=>{try{m.remove()}catch(e){}},500)};
 function mkMap(id,center,zoom){const el=$(id);if(!el)return null;dropMap(id);
  if(!window.L){const n=document.createElement("div");n.className="mapnote";n.textContent=t("mapBlocked");el.appendChild(n);return null}
- const m=L.map(el,{worldCopyJump:true}).setView(center||PK_CENTER,zoom||5);
+ const m=L.map(el,{worldCopyJump:true,scrollWheelZoom:false}).setView(center||PK_CENTER,zoom||5);
+ m.on("click focus",()=>m.scrollWheelZoom.enable());m.on("mouseout blur",()=>m.scrollWheelZoom.disable());
  const base=L.tileLayer(TILE.map[0],TILE.map[1]).addTo(m),sat=L.tileLayer(TILE.sat[0],TILE.sat[1]),lbl=L.tileLayer(TILE.lbl[0],TILE.lbl[1]);let errs=0;
  const warn=()=>{if(++errs===4&&!el.querySelector(".mapnote")){const n=document.createElement("div");n.className="mapnote";n.textContent=t("mapBlocked");el.appendChild(n)}};base.on("tileerror",warn);sat.on("tileerror",warn);
  const C=L.Control.extend({onAdd(){const d=L.DomUtil.create("div","lyr");d.innerHTML=`<button type="button" data-lyr="map" aria-pressed="true">${t("street")}</button><button type="button" data-lyr="sat" aria-pressed="false">${t("satellite")}</button>`;
