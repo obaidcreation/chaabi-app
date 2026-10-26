@@ -1,0 +1,12 @@
+<!-- Supabase > Authentication > Emails > Confirm signup. Subject: Verify your Chaabi.com account -->
+<div style="background:#F8F3EA;padding:24px;font-family:Arial,sans-serif;color:#12302E">
+  <div style="max-width:520px;margin:0 auto">
+    <div style="background:#0F5A55;color:#fff;border-radius:14px 14px 0 0;padding:18px 22px;font-size:20px;font-weight:bold">chaabi<span style="color:#E0B25A">.com</span></div>
+    <div style="background:#fff;border:1px solid #D9CDB4;border-top:0;border-radius:0 0 14px 14px;padding:24px">
+      <h1 style="margin:0 0 10px;font-size:22px">Verify your email</h1>
+      <p style="margin:0 0 20px;font-size:15px;line-height:1.6">Assalam o Alaikum. Tap the button to verify {{ .Email }} and activate your Chaabi.com account. You can log in only after this step.</p>
+      <a href="{{ .ConfirmationURL }}" style="display:inline-block;background:#0F5A55;color:#fff;text-decoration:none;font-weight:bold;padding:13px 22px;border-radius:10px">Verify my email</a>
+      <p style="margin:22px 0 0;font-size:13px;color:#55665F">If you did not create this account, ignore this email.</p>
+    </div>
+  </div>
+</div>
